@@ -1,0 +1,15 @@
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\bin\Debug\net6.0\Minesweeper.exe
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\bin\Debug\net6.0\Minesweeper.deps.json
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\bin\Debug\net6.0\Minesweeper.runtimeconfig.json
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\bin\Debug\net6.0\Minesweeper.dll
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\bin\Debug\net6.0\Minesweeper.pdb
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\obj\Debug\net6.0\Minesweeper.csproj.AssemblyReference.cache
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\obj\Debug\net6.0\Minesweeper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\obj\Debug\net6.0\Minesweeper.AssemblyInfoInputs.cache
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\obj\Debug\net6.0\Minesweeper.AssemblyInfo.cs
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\obj\Debug\net6.0\Minesweeper.csproj.CoreCompileInputs.cache
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\obj\Debug\net6.0\Minesweeper.dll
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\obj\Debug\net6.0\refint\Minesweeper.dll
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\obj\Debug\net6.0\Minesweeper.pdb
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\obj\Debug\net6.0\Minesweeper.genruntimeconfig.cache
+C:\Users\Michelle\Documents\Betelgeuse\Projects\project4-minesweeper\Minesweeper\Minesweeper\obj\Debug\net6.0\ref\Minesweeper.dll
