@@ -31,7 +31,8 @@ namespace Minesweeper
             // QUESTION/PROBLEM: How do you generate 10 random numbers that will NOT repeat? For example, do NOT generate number 7 and 7. Potentially use try/catch method?
 
             int randomNumberForMine = 15;
-            bool isMine;
+
+            //bool isMine;
             //foreach (int i in minesweeperGrid) 
             //{
             //    if (i == randomNumberForMine)
@@ -54,9 +55,9 @@ namespace Minesweeper
             //Console.WriteLine(minesweeperGrid[5, 3]);
 
             //---FUNCTION: User enters coordinates
-            string[] userGuessCoordinates;
-            string userGuessColumn;
-            string userGuessRow;
+            //string[] userGuessCoordinates;
+            //string userGuessColumn;
+            //string userGuessRow;
 
             //Console.WriteLine("Add in your coordinates (row,column)");
             //userGuessCoordinates = Console.ReadLine().Split(',');
@@ -64,35 +65,86 @@ namespace Minesweeper
             //int userGuessColumnNumber = Int32.Parse(userGuessCoordinates[1]);
 
             //--- FUNCTION: Coordinates entered by user is checked in the minesweeperGrid and the value is returned.
-            // Console.WriteLine(minesweeperGrid[userGuessRowNumber, userGuessColumnNumber]);
+            //Console.WriteLine(minesweeperGrid[userGuessRowNumber, userGuessColumnNumber]);
+            //int userGuess = (minesweeperGrid[userGuessRowNumber, userGuessColumnNumber]);
 
-            int userGuess = (minesweeperGrid[userGuessRowNumber, userGuessColumnNumber]);
-
-            // if userGuess value is 15, and equals to the randomNumberforMine(15), then ...
+            // SCENARIO: if userGuess value is 15, and equals to the randomNumberforMine(15), then ...
 
 
-            bool isCorrectGuess = false;
+            //if (userGuess == randomNumberForMine)
+            //{
+            //    Console.WriteLine("You hit a MINE! ~GAME OVER ~");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("NOT a mine. Enter your next coordinates");
+            //}
 
-            while (!isCorrectGuess == false) // while the player has not GUESSED the correct number, DO:
+
+            // THIS IS WORKING!!!
+            bool isMine = false;
+
+                string[] userGuessCoordinates;
+                string userGuessColumn;
+                string userGuessRow;
+
+            while (!isMine)
             {
+
+
                 Console.WriteLine("Add in your coordinates (row,column)");
                 userGuessCoordinates = Console.ReadLine().Split(',');
                 int userGuessRowNumber = Int32.Parse(userGuessCoordinates[0]);
                 int userGuessColumnNumber = Int32.Parse(userGuessCoordinates[1]);
+                int userGuess = (minesweeperGrid[userGuessRowNumber, userGuessColumnNumber]);
 
-                if (userGuess == randomNumberForMine)
+                if (userGuess != randomNumberForMine)
                 {
-                    Console.WriteLine("YOU HIT A MINE! GAME OVER!");
-
+                    Console.WriteLine("SAFE");
                 }
                 else
                 {
-                    Console.WriteLine("SAFE - you did NOT hit a mine. Continue guessing");
-                    
-
+                    Console.WriteLine("You hit a MINE! GAME OVER!");
+                    break;
                 }
 
             }
+
+
+        }
+    }
+}
+
+
+            //if (userGuess == randomNumberForMine)
+            //{
+            //    Console.WriteLine("YOU HIT A MINE! GAME OVER!");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("SAFE - you did NOT hit a mine. Continue guessing");
+            //}
+
+
+            //bool isCorrectGuess = false;
+
+            //while (!isCorrectGuess == false) // while the player has not GUESSED the correct number, DO:
+            //{
+
+            //    // Issue: If the user guess is NOT correct, then continue guessing. How do we escape from this loop..
+            //    if (userGuess == randomNumberForMine)
+            //    {
+            //        Console.WriteLine("YOU HIT A MINE! GAME OVER!");
+            //        isCorrectGuess = true;
+
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("SAFE - you did NOT hit a mine. Continue guessing");
+
+            //    }
+
+            //}
 
 
 
@@ -100,18 +152,6 @@ namespace Minesweeper
 
 
             //QUESTION/PROBLEM: How can you change the value in a 2D grid.
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -216,7 +256,3 @@ namespace Minesweeper
             //}
             //Console.WriteLine("\npress any key to exit the game :)");
 
-
-        }
-    }
-}
