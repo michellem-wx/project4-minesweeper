@@ -6,31 +6,144 @@ namespace Minesweeper
     {
         static void Main(string[] args)
         {
-            
-            // test 2D arrays for the grid:
-            int[,] minesweeperGrid = new int[10, 10]
-            {
-                {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
-                {11, 12, 13, 14, 15, 16, 17, 18, 19, 20 },
-                {21, 22, 23, 24, 25, 26, 27, 28, 29, 30 },
-                {31, 32, 33, 34, 35, 36, 37, 38, 39, 40 },
-                {41, 42, 43, 44, 45, 46, 47, 48, 49, 50 },
-                {51, 52, 53, 54, 55, 56, 57, 58, 59, 60 }, //row 5
-                {61, 62, 63, 64, 65, 66, 67, 68, 69, 70 },
-                {71, 72, 73, 74, 75, 76, 76, 78, 79, 80 },
-                {81, 82, 83, 84, 85, 86, 87, 88, 89, 90 },
-                {91, 92, 93, 94, 95, 96, 97, 98, 99, 100 },
 
-            };
+            //** FUNCTION ** 
+            // Generate values 1 and 0 on a 2D array
+            // 1 = mines (10 generated)
+            // 2 = not a mine
+          
+            Random rnd = new Random();
+            int[,] minesweeperGrid = new int[10, 10];
+            int mineCount = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+            int minePerRow = 0;
+                
+                // working on the values of each row
+                for (int j = 0; j < 10; j++) 
+                {
+                    // why its limiting '1'
+                    if (mineCount < 10 && minePerRow < 1) 
+                    {
+                        // we don't know YET if the value is 0 or 1
+                        minesweeperGrid[i, j] = rnd.Next(2);
+
+                        // examining the value if it is 1. If it is 1, increase the count.
+                        if (minesweeperGrid[i, j] == 1) 
+                        { 
+                            mineCount++; 
+                            minePerRow++;
+                        }
+                    }
+                    else
+                    {
+                        minesweeperGrid[i, j] = 0;
+                    }
+                    //looping on each column of each row
+                    Console.Write($"{minesweeperGrid[i, j]},"); 
+                }
+                //each row
+                Console.WriteLine(String.Empty); 
+            }
+
+            // ** FUNCTION **
+            // User input will be represented as 'coordinates' of the grid
+            // If they uncover a '1', they hit a mine and game ends.
+
+            string[] userGuessCoordinates;
+            string userGuessRow;
+            string userGuessColumn;
+            bool isMine = false;
+
+            while (!isMine)
+            {
+                Console.WriteLine("\nAdd in your coordinates in the format: ROW, COLUMN");
+                userGuessCoordinates = Console.ReadLine().Split(',');
+                int userGuessRowNumber = Int32.Parse(userGuessCoordinates[0]);
+                int userGuessColumnNumber = Int32.Parse(userGuessCoordinates[1]);
+                int userGuess = (minesweeperGrid[userGuessRowNumber, userGuessColumnNumber]);
+                
+                if (userGuess == 0)
+                {
+                    Console.WriteLine("SAFE. Guess another coordinate");
+                }
+                else
+                {
+                    Console.WriteLine("BOOM! You hit a mine! GAME OVER");
+                }
+            }
+
+
+
+
 
             //---FUNCTION: Generate random numbers so you will have your mines. The value of these mines needs to be 'marked' on the grid as mines.
             //Random generateRandomNum = new Random();
+            // THIS IS WORKING!!! TEST
+            //bool isMine = false;
+
+            //string[] userGuessCoordinates;
+            //string userGuessColumn;
+            //string userGuessRow;
+
+
+
+
+
+            //while (!isMine)
+            //{
+            //    Console.WriteLine("Add in your coordinates (row,column)");
+            //    userGuessCoordinates = Console.ReadLine().Split(',');
+            //    int userGuessRowNumber = Int32.Parse(userGuessCoordinates[0]);
+            //    int userGuessColumnNumber = Int32.Parse(userGuessCoordinates[1]);
+            //    int userGuess = (minesweeperGrid[userGuessRowNumber, userGuessColumnNumber]);
+
+            //    // change to == 0. You don't need randomNumberForMine anymore..
+            //    if (userGuess != randomNumberForMine)
+            //    {
+            //        Console.WriteLine("SAFE");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("You hit a MINE! GAME OVER!");
+            //        break;
+            //    }
+
+            //}
+
+
+        }
+    }
+}
             //int randomNumberForMine = generateRandomNum.Next(0, 100);
             //Console.WriteLine(randomNumberForMine);
 
+
+
+
+            // test 2D arrays for the grid:
+            //int[,] minesweeperGrid = new int[10, 10]
+            //{
+            //    {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 },
+            //    {11, 12, 13, 14, 15, 16, 17, 18, 19, 20 },
+            //    {21, 22, 23, 24, 25, 26, 27, 28, 29, 30 },
+            //    {31, 32, 33, 34, 35, 36, 37, 38, 39, 40 },
+            //    {41, 42, 43, 44, 45, 46, 47, 48, 49, 50 },
+            //    {51, 52, 53, 54, 55, 56, 57, 58, 59, 60 }, //row 5
+            //    {61, 62, 63, 64, 65, 66, 67, 68, 69, 70 },
+            //    {71, 72, 73, 74, 75, 76, 76, 78, 79, 80 },
+            //    {81, 82, 83, 84, 85, 86, 87, 88, 89, 90 },
+            //    {91, 92, 93, 94, 95, 96, 97, 98, 99, 100 },
+
+            //};
+
+            ////---FUNCTION: Randomly assign values 0 and 1 into the 2D array.
+            //// 0 = not a mine
+            //// 1 = mine
             // QUESTION/PROBLEM: How do you generate 10 random numbers that will NOT repeat? For example, do NOT generate number 7 and 7. Potentially use try/catch method?
 
-            int randomNumberForMine = 15;
+            //int randomNumberForMine = 15;
 
             //bool isMine;
             //foreach (int i in minesweeperGrid) 
@@ -71,49 +184,8 @@ namespace Minesweeper
             // SCENARIO: if userGuess value is 15, and equals to the randomNumberforMine(15), then ...
 
 
-            //if (userGuess == randomNumberForMine)
-            //{
-            //    Console.WriteLine("You hit a MINE! ~GAME OVER ~");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("NOT a mine. Enter your next coordinates");
-            //}
 
 
-            // THIS IS WORKING!!!
-            bool isMine = false;
-
-                string[] userGuessCoordinates;
-                string userGuessColumn;
-                string userGuessRow;
-
-            while (!isMine)
-            {
-
-
-                Console.WriteLine("Add in your coordinates (row,column)");
-                userGuessCoordinates = Console.ReadLine().Split(',');
-                int userGuessRowNumber = Int32.Parse(userGuessCoordinates[0]);
-                int userGuessColumnNumber = Int32.Parse(userGuessCoordinates[1]);
-                int userGuess = (minesweeperGrid[userGuessRowNumber, userGuessColumnNumber]);
-
-                if (userGuess != randomNumberForMine)
-                {
-                    Console.WriteLine("SAFE");
-                }
-                else
-                {
-                    Console.WriteLine("You hit a MINE! GAME OVER!");
-                    break;
-                }
-
-            }
-
-
-        }
-    }
-}
 
 
             //if (userGuess == randomNumberForMine)
