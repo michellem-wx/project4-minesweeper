@@ -12,63 +12,63 @@ namespace Minesweeper
 
             // ** FUCTION **
             // Randomly generate 2 numbers to become coordinates (x & y) that HOLDS a mine
+            #region NTS
+            // We're assigning the value of '1' to each of the 10 randomly generated coordinates!! 
+            #endregion
             Random rnd = new Random();
-
             int mineCount = 0;
             int totalMinesNeeded = 10;
 
-            // while 0 < 10
             while (mineCount < totalMinesNeeded)
             {
-                // random num x = 8
                 int x = rnd.Next(0, 10);
-                // random num y = 3
                 int y = rnd.Next(0, 10);
-                
+                #region NTS2
                 // if minesweeperGrid[8,3] is 0..
                 // if the mine cell at [8,3] is equal to 0 (i.e. not mine)
-                if (minesweeperGrid[x, y] == 0) // if it generates, 8,3 again, it will be falsey (entire block will be skipped)
+                // the whole grid is starting at 0, hence why we have a value of == 0
+                // if it generates, 8,3 again, it will be falsey (entire block will be skipped) 
+                #endregion
+                if (minesweeperGrid[x, y] == 0) 
                 {
-                    // Q: what does this line do? does it make [8,3] 1?
-                    // then we're making it a mine, therefore assigning '1'
                     minesweeperGrid[x, y] = 1;
-
-                    // increase mineCount
                     mineCount++;
-                }
+                } 
             }
 
+            #region TO DISPLAY GRID WITH MINES
             // ** FUNCTION **
             // Iterate over your 2D array (display)
 
-            for (int i = 0; i < minesweeperGrid.GetLength(0); i++)
-            {
-                for (int j = 0; j < minesweeperGrid.GetLength(1); j++)
-                {
-                    Console.Write(minesweeperGrid[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
+            //for (int i = 0; i < minesweeperGrid.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < minesweeperGrid.GetLength(1); j++)
+            //    {
+            //        Console.Write(minesweeperGrid[i, j] + " ");
+            //    }
+            //    Console.WriteLine();
+            //} 
+            #endregion
 
             // ** FUNCTION **
             // User input will be represented as 'coordinates' of the grid
-            // If they uncover a '1', they hit a mine and game ends.
 
             string[] userGuessCoordinates;
             string userGuessRow;
             string userGuessColumn;
             bool isMine = false;
+            int guesses = 0;
 
+            Console.WriteLine("START GAME: MINESWEEPER\n");
             while (!isMine)
             {
-                Console.WriteLine("\nAdd in your coordinates in the format: ROW, COLUMN");
+                Console.WriteLine("Add in your coordinates in the format: ROW, COLUMN\n(use numbers between 0 and 9 e.g. 1,5)");
                 userGuessCoordinates = Console.ReadLine().Split(',');
                 int userGuessRowNumber = Int32.Parse(userGuessCoordinates[0]);
                 int userGuessColumnNumber = Int32.Parse(userGuessCoordinates[1]);
                 int userGuess = (minesweeperGrid[userGuessRowNumber, userGuessColumnNumber]);
-
-                // storing result of the bool expression in a var:
                 bool userGuessResult = userGuess == 1;
+                guesses++;
 
                 if (userGuessResult)
                 {
@@ -85,6 +85,25 @@ namespace Minesweeper
                             int x = userGuessRowNumber + i;
                             int y = userGuessColumnNumber + j;
 
+                            if (x >= 0 && y >= 0 && x < 10 && y < 10 && minesweeperGrid[x,y] == 1)
+                            {
+                                surroundingMinesCount++;
+                            }
+                        }
+                    }
+                    Console.WriteLine($"SAFE! Number of mines near you: {surroundingMinesCount}\nContinue guessing\n\n");
+
+                }
+
+                if (guesses > 90)
+                {
+                    Console.WriteLine("\n\n\n!!!!!!!!!!!!YOU WIN THE GAME!!!!!!!!!!!!!!!!");
+                    break;
+                }
+            }
+        }
+    }
+}
                             #region newNotes
                             //if (minesweeperGrid[x,y] == 1)
                             //{
@@ -92,27 +111,11 @@ namespace Minesweeper
                             //        surroundingMinesCount++;
                             //} 
                             #endregion
-
-                            if (x >= 0 && y >= 0 && x < 10 && y < 10 && minesweeperGrid[x,y] == 1)
-                            {
-
-                                surroundingMinesCount++;
-                            }
-                        }
-                    }
-                    Console.WriteLine(surroundingMinesCount);
-
                     #region noteForCount
                     // this is reseting the count
                     // not keeping the count in memory
                     //surroundingMinesCount = 0; 
                     #endregion
-                }
-            }
-
-        }
-    }
-}
             // Determine how many mines are adjacent to the userGuess
             // userGuess input is a coordinate e.g. [5,4] (this is an int)
             // Problem to solve: How do you count adjacent mines?
